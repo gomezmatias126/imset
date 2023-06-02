@@ -1,0 +1,29 @@
+---
+// import "/fonts/Helvetica/stylesheet.css"
+// import "/fonts/Raleway/font.css"
+---
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="generator" content={Astro.generator} />
+  <link rel="stylesheet" href="fonts/Helvetica/stylesheet.css" />
+  <link rel="stylesheet" href="fonts/Raleway/font.css" />
+  <title>IMSET Servicio Tecnico de Notebooks</title>
+</head>
+<body class="bg-dark text-light mx-auto">
+
+  <slot />
+  
+</body>
+</html>
+
+<style>
+  body{
+    background: var(--clr-dark);
+    max-width: 2000px;
+  }
+</style>

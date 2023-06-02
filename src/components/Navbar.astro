@@ -1,0 +1,109 @@
+<header id="header" class="header_main fixed w-full z-50 bg-dark">
+  <div class="container">
+    <nav class="flex items-center justify-between w-full h-20">
+      <a
+        href="./index.html"
+        class="font-logo sm:text-3xl text-2xl flex items-center sm:gap-4 gap-2"
+      >
+        <img src="./logo.png" alt="Logo de Imset" class="sm:w-20 w-16" />
+        IMSET
+      </a>
+      <div
+        id="navbar_items"
+        class="select-none w-full sm:gap-10 left-0 top-full md:py-4 py-5 font-regular absolute bg-dark items-center flex-col md:flex md:relative md:w-auto md:flex-row md:top-0 md:h-auto h-screen hidden"
+      >
+        <a
+          href="#hero"
+          class="hover:scale-110 px-10 py-10 md:border-0 md:px-3 md:py-2 hover:text-accent transition-all border-b border-t border-slate-300 w-full md:w-auto text-right"
+          >Inicio</a
+        >
+        <a
+          href="#servicios"
+          class="hover:scale-110 px-10 py-10 md:border-0 md:px-3 md:py-2 hover:text-accent transition-all border-b border-slate-300 w-full md:w-auto text-right"
+          >Servicios</a
+        >
+        <a
+          href="#nosotros"
+          class="hover:scale-110 px-10 py-10 md:border-0 md:px-3 md:py-2 hover:text-accent transition-all border-b border-slate-300 w-full md:w-auto text-right"
+          >Nosotros</a
+        >
+        <a
+          href="#contacto"
+          class="hover:scale-110 px-10 py-10 md:border-0 md:px-3 md:py-2 hover:text-accent transition-all border-b border-slate-300 w-full md:w-auto text-right"
+          >Contacto</a
+        >
+      </div>
+      <button id="btn_navbar" class="transition-all p-2 md:hidden hover:cursor-pointer">
+        <svg
+          id="btn_navbar_hamburger_svg"
+          width="50"
+          height="30"
+          viewBox="0 0 60 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M25 10H50"
+            stroke="#E9EFFF"
+            stroke-width="3"
+            stroke-linecap="square"></path>
+          <path
+            d="M10 30H25"
+            stroke="#E9EFFF"
+            stroke-width="3"
+            stroke-linecap="square"></path>
+          <path
+            d="M10 20H50"
+            stroke="#E9EFFF"
+            stroke-width="3"
+            stroke-linecap="square"></path>
+        </svg>
+        <svg
+          id="btn_navbar_quit_svg"
+          class="hidden"
+          width="60"
+          height="40"
+          viewBox="0 0 60 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M21.1611 28.8388L38.8388 11.1611"
+            stroke="#E9EFFF"
+            stroke-width="3"
+            stroke-linecap="square"></path>
+          <path
+            d="M21.1611 11.1611L38.8388 28.8388"
+            stroke="#E9EFFF"
+            stroke-width="3"
+            stroke-linecap="square"></path>
+        </svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header_main{
+    max-width: inherit;
+  }
+</style>
+
+<script>
+  const btn_navbar = document.getElementById("btn_navbar");
+  const navbar_items = document.getElementById("navbar_items");
+  const header = document.getElementById("header");
+  const btn_navbar_hamburger_svg = document.getElementById(
+    "btn_navbar_hamburger_svg"
+  );
+  const btn_navbar_quit_svg = document.getElementById("btn_navbar_quit_svg");
+
+  function toggleMenu() {
+    navbar_items.classList.toggle("hidden");
+    navbar_items.classList.toggle("flex");
+    btn_navbar_hamburger_svg.classList.toggle("hidden");
+    btn_navbar_quit_svg.classList.toggle("hidden");
+  }
+  btn_navbar.addEventListener("click", toggleMenu);
+  navbar_items.addEventListener("click", toggleMenu);
+</script>

@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Helvetica93-ExtendedBlack';
+    src: url('Helvetica93-ExtendedBlack.woff2') format('woff2'),
+        url('Helvetica93-ExtendedBlack.woff') format('woff'),
+        url('Helvetica93-ExtendedBlack.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

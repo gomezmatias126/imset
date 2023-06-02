@@ -24,7 +24,7 @@ const pcServicios = [
       class="overlay_img_servicios absolute top-0 left-0 z-30 w-full lg:aspect-[2/1] sm:aspect-[1/1] aspect-[4/6]"
     ></span>
     <img
-      src="./img_servicios.png"
+      src="./img/img_servicios.png"
       alt="Tecnico Arreglando una Notebook"
       class="lg:aspect-[2/1] sm:aspect-[1/1] aspect-[4/6] w-full object-cover"
     />
@@ -41,13 +41,13 @@ const pcServicios = [
       Que Ofrecemos?
     </h3>
   </div>
-  <div class="container grid_servicios relative z-20 xl:mt-60 xl:mb-20 mt-40 xl:grid flex flex-col">
+  <div class="container h-full grid_servicios relative z-20 xl:mt-60 xl:mb-20 mt-40 grid grid-rows-[9] items-center justify-center gap-8">
     <article
-      class="relative border border-[#363636] rounded-2xl bg-[#2A2A2A]/[0.97] backdrop-blur-sm sm:p-10 p-5 servicio1"
+      class="w-full h-auto lg:h-full lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-[9] relative border border-[#363636] rounded-2xl bg-[#2A2A2A]/[0.97] backdrop-blur-sm sm:p-10 p-5 servicio1"
     >
-      <div class="flex sm:flex-row flex-col-reverse sm:items-center justify-between sm:gap-5 gap-3">
+      <div class="flex sm:flex-row flex-col-reverse items-start justify-between sm:gap-5 gap-3">
         <h4
-          class="font-extra-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFB3] to-accent  2xl:text-7xl xl:text-6xl sm:text-5xl text-3xl"
+          class="font-extra-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00FFB3] to-accent 2xl:text-7xl xl:text-6xl sm:text-5xl text-3xl"
         >
           Reparación de Notebooks
         </h4>
@@ -64,7 +64,7 @@ const pcServicios = [
             fill="#E9EFFF"></path>
         </svg>
       </div>
-      <ul class="mt-8 sm:mt-10 lineaColorServicio relative flex flex-col gap-5 p-6">
+      <ul class="mt-6 sm:mt-10 lineaColorServicio relative flex flex-col gap-5 p-6">
         {
           notebookServicios.map((item) => (
             <li class="font-regular sm:text-2xl text-base">{item}</li>
@@ -72,34 +72,12 @@ const pcServicios = [
         }
       </ul>
     </article>
+    
     <article
-      class="relative border border-[#363636] rounded-2xl bg-[#2A2A2A]/[0.80] sm:p-10 p-5 servicio2"
+      class="w-full h-auto lg:h-full lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-7 relative border border-[#363636] rounded-2xl bg-[#2A2A2A]/[0.60] sm:p-10 p-5 servicio3"
     >
-      <div class="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between sm:gap-5 gap-3">
-        <h4 class="font-extra-bold text-3xl md:text-4xl lg:text-4xl">Reparación de Monitores</h4>
-        <svg
-          class="w-1/3 h-min"
-          width="110"
-          height="100"
-          viewBox="0 0 110 100"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M100 70H10V10H100M100 0H10C4.45 0 0 4.45 0 10V70C0 72.6522 1.05357 75.1957 2.92893 77.0711C4.8043 78.9464 7.34784 80 10 80H45V90H35V100H75V90H65V80H100C102.652 80 105.196 78.9464 107.071 77.0711C108.946 75.1957 110 72.6522 110 70V10C110 7.34784 108.946 4.8043 107.071 2.92893C105.196 1.05357 102.652 0 100 0Z"
-            fill="#E9EFFF"></path>
-        </svg>
-      </div>
-      <ul class="mt-8 sm:mt-5 lineaColorServicio relative flex flex-col gap-5 p-6">
-        <li class="font-regular sm:text-lg text-base">MicroElectronica</li>
-        <li class="font-regular sm:text-lg text-base">Reemplazo de componentes</li>
-      </ul>
-    </article>
-    <article
-      class="relative border border-[#363636] rounded-2xl bg-[#2A2A2A]/[0.60] sm:p-10 p-5 servicio3"
-    >
-      <div class="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between sm:gap-5 gap-3">
-        <h4 class="font-extra-bold text-3xl md:text-4xl lg:text-4xl">Reparación de PC Escritorio</h4>
+      <div class="flex flex-col-reverse sm:flex-row items-start justify-between sm:gap-5 gap-3">
+        <h4 class="font-extra-bold text-3xl md:text-4xl lg:text-4xl sm:text-5xl">Reparación de PC Escritorio</h4>
         <svg
           class=" w-1/3 h-min"
           width="164"
@@ -113,12 +91,35 @@ const pcServicios = [
             fill="#E9EFFF"></path>
         </svg>
       </div>
-      <ul class="mt-8 sm:mt-5 lineaColorServicio relative flex flex-col gap-5 p-6">
+      <ul class="mt-6 sm:mt-10 lineaColorServicio relative flex flex-col gap-5 p-6">
         {
           pcServicios.map((item) => (
             <li class="font-regular sm:text-lg text-base">{item}</li>
           ))
         }
+      </ul>
+    </article>
+    <article
+      class="w-full h-auto lg:h-full lg:col-start-2 lg:col-end-3 lg:row-start-7 lg:row-end-[9] relative border border-[#363636] rounded-2xl bg-[#2A2A2A]/[0.80] sm:p-10 p-5 servicio2"
+    >
+      <div class="flex flex-col-reverse sm:flex-row items-start justify-between sm:gap-5 gap-3">
+        <h4 class="font-extra-bold text-3xl md:text-4xl lg:text-4xl sm:text-5xl">Reparación de <br> Monitores</h4>
+        <svg
+          class="h-full sm:max-w-none max-w-[100px] w-auto"
+          width="110"
+          height="100"
+          viewBox="0 0 110 100"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M100 70H10V10H100M100 0H10C4.45 0 0 4.45 0 10V70C0 72.6522 1.05357 75.1957 2.92893 77.0711C4.8043 78.9464 7.34784 80 10 80H45V90H35V100H75V90H65V80H100C102.652 80 105.196 78.9464 107.071 77.0711C108.946 75.1957 110 72.6522 110 70V10C110 7.34784 108.946 4.8043 107.071 2.92893C105.196 1.05357 102.652 0 100 0Z"
+            fill="#E9EFFF"></path>
+        </svg>
+      </div>
+      <ul class="mt-6 sm:mt-10 lineaColorServicio relative flex flex-col gap-5 p-6">
+        <li class="font-regular sm:text-lg text-base">MicroElectronica</li>
+        <li class="font-regular sm:text-lg text-base">Reemplazo de componentes</li>
       </ul>
     </article>
   </div>
@@ -134,26 +135,6 @@ const pcServicios = [
       rgba(34, 34, 34, 1) 100%
     );
   }
-  .grid_servicios {
-    display: grid;
-    grid-template-columns: 4fr 3fr;
-    /* grid-template-rows: 4fr 6fr; */
-    /* grid-template-rows: repeat(6, 1fr); */
-    grid-auto-rows: minmax(10px, auto);
-    gap: 40px;
-  }
-  .servicio1 {
-    grid-column: 1;
-    grid-row: 1/5;
-  }
-  .servicio2 {
-    grid-column: 2;
-    grid-row: 3/5;
-  }
-  .servicio3 {
-    grid-column: 2;
-    grid-row: 1/3;
-  }
   .grid_servicios::after {
     content: "";
     opacity: 0.05;
@@ -163,7 +144,7 @@ const pcServicios = [
     height: 100%;
     left: -40%;
     bottom: -7%;
-    background-image: url(./circulos.svg);
+    background-image: url('../img/circulos.svg');
     background-repeat: no-repeat;
     background-position: left top;
     background-size: contain;
@@ -179,7 +160,7 @@ const pcServicios = [
     left: 40%;
     top: 50%;
     overflow: hidden;
-    background-image: url(./triangulo.svg);
+    background-image: url('../img/triangulo.svg');
     background-repeat: no-repeat;
     background-position: left top;
     background-size: contain;

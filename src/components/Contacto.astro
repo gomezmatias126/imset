@@ -13,7 +13,7 @@
       class="gap-y-20 flex flex-col lg:grid lg:grid-flow-row-dense lg:grid-cols-11"
     >
       <div
-        class="pt-8 pb-1 px-4 sm:px-8 col-span-6 lining-nums form_box rounded-2xl shadow-xl"
+        class="pt-8 pb-1 px-4 sm:px-5 col-span-6 lining-nums form_box rounded-2xl shadow-xl"
       >
         <form id="form" class="w-full">
           <div class="flex flex-col gap-8 font-regular">
@@ -23,6 +23,7 @@
             <div class="flex flex-col gap-2">
               <label class="text-light font-medium" for="nombre">Nombre</label>
               <input
+                required
                 class="input lining-nums h-10 rounded-lg px-2 bg-slate-200 border-[1px] text-dark"
                 name="nombre"
                 id="nombre"
@@ -34,15 +35,17 @@
                 >Telefono</label
               >
               <input
+                required
                 class="input lining-nums h-10 rounded-lg px-2 bg-slate-200 border-[1px] text-dark"
                 name="telefono"
                 id="telefono"
-                type="tel"
+                type="number"
               />
             </div>
             <div class="flex flex-col gap-2">
               <label class="text-light font-medium" for="email">Email</label>
               <input
+                required
                 class="input lining-nums h-10 rounded-lg px-2 bg-slate-200 border-[1px] text-dark"
                 name="email"
                 id="email"
@@ -84,7 +87,7 @@
                 aria-roledescription="Enviar Formulario"
                 name="Enviar Formulario">Enviar</button
               >
-              <div class="enviado mt-2 font-regular text-xl" id="enviado">
+              <div class="enviado mt-2 font-regular text-xl" id="enviado" aria-roledescription="Indicador del Estado del Mensaje Enviado" aria-hidden="true">
                 <span>Enviando Mensaje....</span>
               </div>
             </div>
@@ -269,13 +272,13 @@
   .enviado {
     visibility: hidden;
     color: white;
-    background-color: green;
+    background-color: slateblue;
     border-radius: 10px;
     text-align: center;
   }
-  .enviado.error,
-  .enviado.vacio {
+  .enviado.error{
     background-color: red;
+    color: black;
     visibility: visible;
   }
   .enviado.sended {
@@ -283,15 +286,12 @@
     color: black;
     visibility: visible;
   }
-  .enviado.error span {
-    color: black;
-  }
 </style>
 
 <script>
   const formulario = document.getElementById("form");
   const respuesta = document.getElementById("enviado");
-  let btnEnviarForm = document.getElementById("btnEnviarForm");
+  const btnEnviarForm = document.getElementById("btnEnviarForm");
 
   function enable__form() {
     btnEnviarForm.disabled = false;
@@ -300,36 +300,27 @@
     }, 10000);
   }
   formulario.addEventListener("submit", function (e) {
-    respuesta.innerHTML = "<span>Enviando Mensaje....</span>";
+    respuesta.textContent = "Enviando Mensaje...";
     respuesta.style.visibility = "visible";
     e.preventDefault();
     btnEnviarForm.disabled = true;
     var datos = new FormData(formulario);
-    fetch("./php/post.php", {
+    fetch("/php/post.php", {
       method: "POST",
       body: datos,
     })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data === "error") {
-          respuesta.innerHTML =
-            "<span>Hubo un error, intente nuevamente</span>";
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        respuesta.textContent = data;
+        if (data.includes("Error")) {
           respuesta.classList.add("error");
           enable__form();
           setTimeout(() => {
             respuesta.classList.remove("error");
           }, 10000);
         }
-        if (data === "vacio") {
-          respuesta.innerHTML = "<span>* Rellene todos los campos</span>";
-          respuesta.classList.add("vacio");
-          enable__form();
-          setTimeout(() => {
-            respuesta.classList.remove("vacio");
-          }, 10000);
-        }
-        if (data === "enviado") {
-          respuesta.innerHTML = "<span>Mensaje Recibido</span>";
+        else{
           respuesta.classList.add("sended");
           formulario.reset();
           enable__form();
@@ -339,8 +330,7 @@
         }
       })
       .catch((err) => {
-        respuesta.innerHTML =
-          "<span>Hay fallas en el envio, intente por otra via de contacto</span>";
+        respuesta.textContent = "Hay fallas en el envio, intente por otra via de contacto";
         respuesta.classList.add("error");
         enable__form();
         setTimeout(() => {

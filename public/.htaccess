@@ -1,0 +1,60 @@
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+# <Files *.php>
+# order allow,deny
+# deny from all
+# </Files>
+<FilesMatch "\.(php|php\.)(.+)(\w|\d)$">
+ Order Allow,Deny
+ Deny from all
+</FilesMatch>
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+Header set Cache-Control "max-age=1600, public"
+</FilesMatch>
+Header always set Strict-Transport-Security "max-age=3153600; includeSubDomains; preload" env=HTTPS
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} !=""
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^(.*)$ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=302]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)\.html$ /$1 [L,R=302]
+
+
+RewriteRule ^(cache|includes|logs|tmp)/ - [F]
+
+RewriteCond %{REQUEST_FILENAME} -f
+  RewriteCond %{REQUEST_URI} \.php|\.ini|\.xml [NC]
+  RewriteCond %{REQUEST_URI} \/library\/ [OR]
+  RewriteCond %{REQUEST_URI} \/images\/ [OR]
+  RewriteCond %{REQUEST_URI} \/cache\/
+  RewriteRule ^(.*)$ index.php [R=404]
+  
+    RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+  RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget) [NC,OR]
+  RewriteCond %{HTTP_USER_AGENT} (winhttp|HTTrack|clshttp|archiver|loader|email|harvest|extract|grab|miner) [NC,OR]
+  RewriteCond %{HTTP_USER_AGENT} (libwww-perl|curl|wget|python|nikto|scan) [NC,OR]
+  RewriteCond %{HTTP_USER_AGENT} (<|>|’|%0A|%0D|%27|%3C|%3E|%00) [NC]
+  RewriteRule .* - [F]
+  
+
+Options -Indexes 
+# ServerSignature Off
+#   ErrorDocument 404  “Ups! Se ha producido un error”
+#   ErrorDocument 403  “Ups! Se ha producido un error”
+#   ErrorDocument 400  “Ups! Se ha producido un error”
+#   ErrorDocument 406  “Ups! Se ha producido un error”
+#   ErrorDocument 412  “Ups! Se ha producido un error”
+#   ErrorDocument 416  “Ups! Se ha producido un error”
+#   ErrorDocument 501  “Ups! Se ha producido un error”
+#   ErrorDocument 401  “Ups! Se ha producido un error”
+#   ErrorDocument 500  “Ups! Se ha producido un error”
+</IfModule>
